@@ -1,16 +1,40 @@
 #jugadores {
     display: grid;
-    grid-template-columns: repeat(6,1fr);
-    grid-template-rows: repeat(6,1fr);
+    grid-template-columns: repeat(auto,1fr);
+    grid-template-rows: repeat(4,1fr);
+    
 }
 
-#jugadores h2 {
+.Goalkeeper {
+    grid-row: 1/1;
+}
+
+.Defender { 
+    grid-row: 2/2;
+}
+
+.Midfielder { 
+    grid-row: 3/3;
+}
+
+.Attacker { 
+    grid-row: 4/4;
+}
+
+h2 {
     display: grid;
     justify-content: center;
-    font-size: 30px;
+    align-items: center;
+    font-size: 32px;
+    margin: 0.5rem;
+    
 }
 
-#jugadores img {
+#jugadores div img {
+    display: grid;
+    justify-self: center;
+    margin-top: 10px;
+    
 }
 
 #jugadores div {
@@ -19,4 +43,5 @@
     border: solid 2px black;
     border-radius: 25px;
     margin: 10px;
-    background: linear-gradient(135deg, white, white,white,white, red,white,white,white,white);}
+    background: linear-gradient(135deg, white, white,white,white, red,white,white,white,white);
+}
