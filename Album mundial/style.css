@@ -1,39 +1,30 @@
+
+body {
+    margin: 0;
+    padding: 0;
+
+
+    }
+
 #jugadores {
-    display: grid;
-    grid-template-columns: repeat(auto,1fr);
-    grid-template-rows: repeat(4,1fr);
-    
-}
-
-.Goalkeeper {
-    grid-row: 1/1;
-}
-
-.Defender { 
-    grid-row: 2/2;
-}
-
-.Midfielder { 
-    grid-row: 3/3;
-}
-
-.Attacker { 
-    grid-row: 4/4;
-}
-
-h2 {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    font-size: 32px;
-    margin: 0.5rem;
-    
+    margin: 0;
+    height: 100vh;
+    overflow: auto;
+    background: linear-gradient(135deg, white, white,white,white, red,white,white,white,white);
 }
 
+
 #jugadores div img {
-    display: grid;
+    display: flex;
     justify-self: center;
     margin-top: 10px;
+    height: 12vh ;
+
     
 }
 
@@ -41,7 +32,71 @@ h2 {
     display: grid;
     justify-content: center;
     border: solid 2px black;
-    border-radius: 25px;
-    margin: 10px;
-    background: linear-gradient(135deg, white, white,white,white, red,white,white,white,white);
+    border-radius: 5px;
+    margin: 0.9rem;
 }
+
+#jugadores div:hover {
+    opacity: 1;
+}
+
+
+.Goalkeeper {
+    grid-row: 1/1;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+.Goalkeeper:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+
+.Defender { 
+    grid-row: 2/2;
+    opacity: 0.5;
+    filter: grayscale(100%);
+
+}
+
+.Defender:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+
+}
+
+.Midfielder { 
+    grid-row: 3/3;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+.Midfielder:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+
+}
+
+.Attacker { 
+    grid-row: 4/4;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
+
+.Attacker:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+
+}
+
+
+h2 {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content:center;
+    font-size:2vh;
+    margin: 0.1rem;
+    
+}
+

@@ -8,10 +8,10 @@ const options = {
 
 let obj;
 let mostrarJugadores = document.getElementById("jugadores");
-/* let arqueros = document.getElementById("arquero");
+let arqueros = document.getElementById("arquero");
 let defensores = document.getElementById("defensor");
 let mediocampistas = document.getElementById("mediocampista");
-let delanteros = document.getElementById("delantero"); */
+let delanteros = document.getElementById("delantero");
 
 fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=435', options)
 	.then(response => response.json())
@@ -34,10 +34,31 @@ fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=435', optio
         mostrarJugadorNombre.innerText = nombre;
         mostrarJugadorNumero.innerText = numero;
 
-        mostrarJugadores.appendChild(contenedorJugadores).appendChild(mostrarJugadorFoto);
-        mostrarJugadores.appendChild(contenedorJugadores).appendChild(mostrarJugadorNombre);
-        mostrarJugadores.appendChild(contenedorJugadores).appendChild(mostrarJugadorNumero);
+        if(position == "Goalkeeper") {
+            arqueros.appendChild(contenedorJugadores).appendChild(mostrarJugadorFoto);
+            arqueros.appendChild(contenedorJugadores).appendChild(mostrarJugadorNombre);
+            arqueros.appendChild(contenedorJugadores).appendChild(mostrarJugadorNumero);     
+           };
+        if(position == "Defender") { 
+            defensores.appendChild(contenedorJugadores).appendChild(mostrarJugadorFoto);
+            defensores.appendChild(contenedorJugadores).appendChild(mostrarJugadorNombre);
+            defensores.appendChild(contenedorJugadores).appendChild(mostrarJugadorNumero);   
+        };
+        if(position == "Midfielder") { 
+            mediocampistas.appendChild(contenedorJugadores).appendChild(mostrarJugadorFoto);
+            mediocampistas.appendChild(contenedorJugadores).appendChild(mostrarJugadorNombre);
+            mediocampistas.appendChild(contenedorJugadores).appendChild(mostrarJugadorNumero);   
+        };
+        if(position == "Attacker") { 
+            delanteros.appendChild(contenedorJugadores).appendChild(mostrarJugadorFoto);
+            delanteros.appendChild(contenedorJugadores).appendChild(mostrarJugadorNombre);
+            delanteros.appendChild(contenedorJugadores).appendChild(mostrarJugadorNumero);   
+        };
 
+        mostrarJugadores.appendChild(arqueros);
+        mostrarJugadores.appendChild(defensores);
+        mostrarJugadores.appendChild(mediocampistas);
+        mostrarJugadores.appendChild(delanteros);
 
         })
         )
