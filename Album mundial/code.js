@@ -13,13 +13,52 @@ let defensores = document.getElementById("defensor");
 let mediocampistas = document.getElementById("mediocampista");
 let delanteros = document.getElementById("delantero");
 
-fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=435', options)
+/* tabla equipos por ID 
+435 river
+448 colon
+451 boca
+438 velez
+456 talleres
+450 estudiantes
+*/
+
+
+
+
+
+
+fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=448', options)
 	.then(response => response.json())
     .then(data => obj = data)
 	.then(response => console.log(response))
-    .then(() =>  obj.response[0].players.forEach(element => {
+    .then(() =>  obj.response[0].players.forEach(async element => {
+
+       
+
+
         let nombre = element.name; 
+
         let foto = element.photo;
+
+     /*    const blob = new Blob([JSON.stringify(element)], {
+            type: "application/json",
+          });
+          
+          const reader = new FileReader();
+            reader.addEventListener("loadend", () => {
+            // reader.result contains the contents of blob as a typed array
+            });
+            reader.readAsArrayBuffer(blob);
+
+            console.log(reader) */
+
+
+      
+
+        /* const fileImg = await fetch(foto).then(r => r.blob());
+        console.log(fileImg.size); */
+
+        
         let sinNumero = Math.floor(Math.random() * 100); /* genero un número aleatorio para los jugadores que 
                                     no tienen número en la API  */    
         let numero = element.number ?? sinNumero;
@@ -29,6 +68,8 @@ fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=435', optio
         let mostrarJugadorNombre = document.createElement("h2");
         let mostrarJugadorNumero = document.createElement("h2");
         let mostrarJugadorFoto = document.createElement("img");
+
+     
 
         mostrarJugadorFoto.src = foto; 
         mostrarJugadorNombre.innerText = nombre;
@@ -64,4 +105,34 @@ fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=435', optio
         )
 	.catch(err => console.error(err));
 
+
+let imagenes = document.querySelectorAll(".arquero");
+let imgSrc;
+imagenes.forEach((img) => {
+    img.addEventListener('click', (e) => { 
+        imgSrc = e.target.src;
+        imgModal(imgSrc);
+        
+    });
+});
+
+//creating the modal
+let imgModal = (src) => {
+    const modal = document.createElement("div");
+    modal.setAttribute("class", "modal");
+    //add the modal to the main section or the parent element
+    document.querySelector(".jugadores").append(modal);
+    //adding image to modal
+    const newImage = document.createElement("img");
+    newImage.setAttribute("src", src);
+    //creating the close button
+    const closeBtn = document.createElement("div");
+    closeBtn.textContent = "X";
+    closeBtn.setAttribute("class", "closeBtn");
+    //close function
+    closeBtn.onclick = () => {
+        modal.remove();
+    };
+    modal.append(newImage, closeBtn);
+};
 
