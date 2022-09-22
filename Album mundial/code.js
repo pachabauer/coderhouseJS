@@ -23,11 +23,7 @@ let delanteros = document.getElementById("delantero");
 */
 
 
-
-
-
-
-fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=448', options)
+fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=450', options)
 	.then(response => response.json())
     .then(data => obj = data)
 	.then(response => console.log(response))
@@ -39,24 +35,14 @@ fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=448', optio
         let nombre = element.name; 
 
         let foto = element.photo;
+       
 
-     /*    const blob = new Blob([JSON.stringify(element)], {
-            type: "application/json",
+      /*    let blob = await fetch(foto).then((r) => r.blob());
+         const file = new File([blob], "cover.png", {
+            type: "image/png",
           });
           
-          const reader = new FileReader();
-            reader.addEventListener("loadend", () => {
-            // reader.result contains the contents of blob as a typed array
-            });
-            reader.readAsArrayBuffer(blob);
-
-            console.log(reader) */
-
-
-      
-
-        /* const fileImg = await fetch(foto).then(r => r.blob());
-        console.log(fileImg.size); */
+          console.log(file); */
 
         
         let sinNumero = Math.floor(Math.random() * 100); /* genero un número aleatorio para los jugadores que 
@@ -105,7 +91,7 @@ fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=448', optio
         )
 	.catch(err => console.error(err));
 
-
+/* 
 let imagenes = document.querySelectorAll(".arquero");
 let imgSrc;
 imagenes.forEach((img) => {
@@ -135,4 +121,9 @@ let imgModal = (src) => {
     };
     modal.append(newImage, closeBtn);
 };
+
+let height = screen.height
+let width = screen.width
+
+console.log(`${height} y ${width}`) */
 
