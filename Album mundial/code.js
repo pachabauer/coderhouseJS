@@ -22,29 +22,9 @@ let delanteros = document.getElementById("delantero");
 450 estudiantes
 */
 
-
-fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=450', options)
-	.then(response => response.json())
-    .then(data => obj = data)
-	.then(response => console.log(response))
-    .then(() =>  obj.response[0].players.forEach(async element => {
-
-       
-
-
-        let nombre = element.name; 
-
+function agregarJugador (element) {
+    let nombre = element.name; 
         let foto = element.photo;
-       
-
-      /*    let blob = await fetch(foto).then((r) => r.blob());
-         const file = new File([blob], "cover.png", {
-            type: "image/png",
-          });
-          
-          console.log(file); */
-
-        
         let sinNumero = Math.floor(Math.random() * 100); /* genero un número aleatorio para los jugadores que 
                                     no tienen número en la API  */    
         let numero = element.number ?? sinNumero;
@@ -54,8 +34,6 @@ fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=450', optio
         let mostrarJugadorNombre = document.createElement("h2");
         let mostrarJugadorNumero = document.createElement("h2");
         let mostrarJugadorFoto = document.createElement("img");
-
-     
 
         mostrarJugadorFoto.src = foto; 
         mostrarJugadorNombre.innerText = nombre;
@@ -87,43 +65,34 @@ fetch('https://api-football-v1.p.rapidapi.com/v3/players/squads?team=450', optio
         mostrarJugadores.appendChild(mediocampistas);
         mostrarJugadores.appendChild(delanteros);
 
-        })
-        )
-	.catch(err => console.error(err));
+}
 
-/* 
-let imagenes = document.querySelectorAll(".arquero");
-let imgSrc;
-imagenes.forEach((img) => {
-    img.addEventListener('click', (e) => { 
-        imgSrc = e.target.src;
-        imgModal(imgSrc);
-        
-    });
-});
+async function mostrarEquipo (teamId) {
+    const resp = await fetch(`https://api-football-v1.p.rapidapi.com/v3/players/squads?team=${teamId}`,
+                 options);
+    const data = await resp.json();
+    data.response[0].players.forEach(player => agregarJugador(player))
+}
 
-//creating the modal
-let imgModal = (src) => {
-    const modal = document.createElement("div");
-    modal.setAttribute("class", "modal");
-    //add the modal to the main section or the parent element
-    document.querySelector(".jugadores").append(modal);
-    //adding image to modal
-    const newImage = document.createElement("img");
-    newImage.setAttribute("src", src);
-    //creating the close button
-    const closeBtn = document.createElement("div");
-    closeBtn.textContent = "X";
-    closeBtn.setAttribute("class", "closeBtn");
-    //close function
-    closeBtn.onclick = () => {
-        modal.remove();
-    };
-    modal.append(newImage, closeBtn);
+mostrarEquipo('450'); 
+
+function limpiarEquipo() {
+    mostrarJugadores.innerHTML = '';
+    arqueros.innerHTML = '';
+    defensores.innerHTML = '';
+    mediocampistas.innerHTML = '';
+    delanteros.innerHTML = '';
 };
 
-let height = screen.height
-let width = screen.width
+function actualizarEquipo(id) {
+    limpiarEquipo();
+    mostrarEquipo(id);}
+/*
+definir set con todos los id de jugador sin foto
+filter sobre players antes de forEach que tome todos los que no esten en set
+fin!
 
-console.log(`${height} y ${width}`) */
+en vez de paginacion, asociar button (o a tag) con id recorriendo array de equipos : id 
+*/
+
 
