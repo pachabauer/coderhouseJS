@@ -1,8 +1,9 @@
 function jugadaComputadora() {
   const elementos = ["Piedra", "Papel", "Tijera"];
-  const elemento = things[Math.floor(Math.random() * elementos.length)];
-  console.log(elemento);
-  return elemento;
+  const elementoComputadora =
+    elementos[Math.floor(Math.random() * elementos.length)];
+  console.log(`Computadora eligió: ${elementoComputadora}`);
+  return elementoComputadora;
 }
 
 function jugadaJugador() {
@@ -18,9 +19,9 @@ function jugadaJugador() {
     elementoJugador = "Tijera";
   } else {
     alert("Eleccion no valida");
-    elementoJugador = "Tijera";
   }
-  document.getElementById("jugadorEleccion").innerText = elementoJugador;
+  console.log(`Jugador eligió: ${elementoJugador}`);
+  return elementoJugador;
 }
 
 function jugarRonda(jugadorSeleccion, computadoraSeleccion) {
@@ -35,14 +36,6 @@ function jugarRonda(jugadorSeleccion, computadoraSeleccion) {
     console.log(
       `Papel le gana a Piedra--> Computadora: ${++puntajeComputadora} Jugador ${puntajeJugador}`
     );
-  } else if (jugadorSeleccion == "Piedra" && computadoraSeleccion == "Tijera") {
-    console.log(
-      `Piedra le gana a Tijera--> Jugador ${++puntajeJugador} Computadora: ${puntajeComputadora}`
-    );
-  } else if (jugadorSeleccion == "Papel" && computadoraSeleccion == "Piedra") {
-    console.log(
-      `Papel le gana a Piedra-> Jugador ${++puntajeJugador} Computadora: ${puntajeComputadora}`
-    );
   } else if (jugadorSeleccion == "Papel" && computadoraSeleccion == "Tijera") {
     console.log(
       `Tijera le gana a Papel--> Computadora: ${++puntajeComputadora} Jugador ${puntajeJugador}`
@@ -50,6 +43,14 @@ function jugarRonda(jugadorSeleccion, computadoraSeleccion) {
   } else if (jugadorSeleccion == "Tijera" && computadoraSeleccion == "Piedra") {
     console.log(
       `Piedra le gana a Tijera--> Computadora: ${++puntajeComputadora} Jugador ${puntajeJugador}`
+    );
+  } else if (jugadorSeleccion == "Piedra" && computadoraSeleccion == "Tijera") {
+    console.log(
+      `Piedra le gana a Tijera--> Jugador ${++puntajeJugador} Computadora: ${puntajeComputadora}`
+    );
+  } else if (jugadorSeleccion == "Papel" && computadoraSeleccion == "Piedra") {
+    console.log(
+      `Papel le gana a Piedra-> Jugador ${++puntajeJugador} Computadora: ${puntajeComputadora}`
     );
   } else if (jugadorSeleccion == "Tijera" && computadoraSeleccion == "Papel") {
     console.log(
@@ -59,18 +60,41 @@ function jugarRonda(jugadorSeleccion, computadoraSeleccion) {
   return [puntajeJugador, puntajeComputadora];
 }
 
-function game() {
+function juego() {
   let jugadorTotal = 0;
   let computadoraTotal = 0;
-  let resultado = jugarRonda(jugadaJugador(), jugadaComputadora());
-  if (resultado[0] == 1) {
-    jugadorTotal += 1;
-  } else if (resultado[1] == 1) {
-    computadoraTotal += 1;
-  }
+  const estiloConsoleLogPuntaje =
+    "font-weight: bold; font-size: 12px; color: blue;";
 
+  while (jugadorTotal < 3 && computadoraTotal < 3) {
+    let resultado = jugarRonda(jugadaJugador(), jugadaComputadora());
+    if (resultado[0] == 1) {
+      jugadorTotal += 1;
+    } else if (resultado[1] == 1) {
+      computadoraTotal += 1;
+    }
+
+    console.log(
+      `%cPuntaje jugador: ${jugadorTotal}\nPuntaje computadora: ${computadoraTotal}`,
+      estiloConsoleLogPuntaje
+    );
+  }
+  chequeoGanador(jugadorTotal, computadoraTotal);
+}
+
+function chequeoGanador(puntajeTotalHumano, puntajeTotalCompu) {
+  let ganador;
+  const estiloConsoleLogGanador =
+    "font-weight: bold; font-size: 14px; color: red;";
+  if (puntajeTotalHumano == 3) {
+    ganador = "Humano";
+  }
+  if (puntajeTotalCompu == 3) {
+    ganador = "Computadora";
+  }
   console.log(
-    `Resultado juego:\nPuntaje jugador: ${jugadorTotal}\nPuntaje computadora: ${computadoraTotal}`
+    `%cFIN DEL JUEGO - RESULTADO : Ganador ${ganador}`,
+    estiloConsoleLogGanador
   );
 }
 
