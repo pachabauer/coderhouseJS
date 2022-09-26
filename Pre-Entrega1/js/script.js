@@ -84,16 +84,19 @@ function juego() {
 
 function chequeoGanador(puntajeTotalHumano, puntajeTotalCompu) {
   let ganador;
+  let paqueteFiguritas;
   const estiloConsoleLogGanador =
     "font-weight: bold; font-size: 14px; color: red;";
   if (puntajeTotalHumano == 3) {
     ganador = "Humano";
+    paqueteFiguritas = "\nGANASTE 5 FIGURITAS PARA LLENAR EL ÁLBUM"
   }
   if (puntajeTotalCompu == 3) {
     ganador = "Computadora";
+    paqueteFiguritas = "";
   }
   console.log(
-    `%cFIN DEL JUEGO - RESULTADO : Ganador ${ganador}`,
+    `%cFIN DEL JUEGO - RESULTADO : Ganador ${ganador} ${paqueteFiguritas}`,
     estiloConsoleLogGanador
   );
 }
