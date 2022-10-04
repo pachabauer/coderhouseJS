@@ -40,3 +40,18 @@ equipo.push(arquero1,arquero2,
 // métodos de Array
 let equipoFiltrado = equipo.filter(dorsal => dorsal.numero != null);
 let equipoMapeado = equipoFiltrado.map(numeroNombre => `${numeroNombre.numero} - ${numeroNombre.nombre}`)
+
+function generarSobre (equipo) {
+    let cantFiguritas = 0;
+    let figusSobre = [];
+    while (cantFiguritas < 3) {
+        let figurita= equipo[Math.floor(Math.random()*equipoMapeado.length)] + ' ';  
+        sobreFiguritas.push(figurita);
+        figusSobre.push(figurita);
+        cantFiguritas += 1;  
+        console.log(figurita)
+    }
+    let sobreSinComas = figusSobre.join(``)
+    console.log(`Te tocaron estas figuritas:\n${sobreSinComas}`);
+    return sobreFiguritas;
+}
