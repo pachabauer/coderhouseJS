@@ -37,3 +37,6 @@ equipo.push(arquero1,arquero2,
     mediocampista1,mediocampista2,mediocampista3,mediocampista4,
     delantero1,delantero2,delantero3);
 
+// métodos de Array
+let equipoFiltrado = equipo.filter(dorsal => dorsal.numero != null);
+let equipoMapeado = equipoFiltrado.map(numeroNombre => `${numeroNombre.numero} - ${numeroNombre.nombre}`)
