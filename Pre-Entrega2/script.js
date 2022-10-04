@@ -55,3 +55,16 @@ function generarSobre (equipo) {
     console.log(`Te tocaron estas figuritas:\n${sobreSinComas}`);
     return sobreFiguritas;
 }
+
+function pilaFiguritas () {
+    let opcion = 0;
+    do {
+        opcion = Number(prompt("Ingrese un número: 1 para sobre , 2 para salir"));
+        localStorage.setItem("figuritas", JSON.stringify(generarSobre(equipoMapeado)));
+        pilaFigus = JSON.parse(localStorage.getItem("figuritas"));
+        console.log(pilaFigus);
+    } while (opcion<2)
+}
+pilaFiguritas();
+
+//repetidas y no repetidas otra función 
