@@ -1,0 +1,108 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(fonts/Action_Man.ttf);
+  }
+  
+  body {
+    background-color: rgba(18, 18, 18);
+
+  }
+
+  .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #fac650;
+    font-family: myFirstFont;
+    margin: 30px;
+    font-size: 30px;
+    max-height: 100px;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .explicacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fac650;
+    font-family: myFirstFont;
+    margin: 20px;
+
+  }
+
+  h4 { 
+    margin: 0;
+    font-size: 20px;
+  }
+
+  .puntajes, #jugadorEleccion, #computadoraEleccion {
+    align-items:center;
+    color: #FFFDFA;
+    font-size: 26px;
+    font-family: myFirstFont;
+    font-weight: bold;
+
+  }
+  
+  .botones, .seleccion {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: myFirstFont;
+    margin: 10px;
+
+  }
+
+  .botones {
+    margin: 50px;
+  }
+
+  .puntajes {
+    display: flex;
+  }
+  
+  #jugadorPuntaje, #computadoraPuntaje, #jugadorEleccion,
+  #computadoraEleccion {
+    display: flex;
+    justify-content: center;
+    width: 50%; /* Can be in percentage also. */
+    margin: 0 ;
+  }
+
+  .seleccion {
+    align-items: flex-start;
+  }
+
+  #piedra, #papel, #tijera {
+    font-size: 100px;
+    background-color: rgba(18, 18, 18,.0);
+    border: none;
+  }
+  
+  #jugadorEleccion,
+  #computadoraEleccion {
+    font-size: 40px;
+    color: rgb(255, 11, 11);
+    font-weight: bold;
+
+  }
+  
+  #computadoraEleccion {
+    color: rgba(248, 102, 17);
+  }
+  
+  #juegoResultado {
+    display: flex;
+    flex-direction: column;
+    color: #FFFDFA;
+    align-items: center;
+    margin: 40px;
+    font-family: myFirstFont;
+    font-size: 20px;
+    font-family: myFirstFont;
+  }
+  
+  
