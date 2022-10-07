@@ -111,13 +111,15 @@ function ganoHumano(puntajeTotalHumano) {
 }
 
 function nuevaPartida() {
-  let opcion = Number(prompt(`
+  let opcion = Number(
+    prompt(`
     HOLA !!
     Juga al piedra papel o tijera.
     Cada partida ganada te da un sobre de figuritas.
     Ganás el juego cuando completás el álbum.
 
-    NUEVO JUEGO: 1 - FINALIZAR JUEGO: 2`));
+    NUEVO JUEGO: 1 - FINALIZAR JUEGO: 2`)
+  );
   if (opcion === 1) {
     return true;
   } else if (opcion === 2) {
