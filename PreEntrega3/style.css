@@ -94,7 +94,7 @@
     color: rgba(248, 102, 17);
   }
   
-  #juegoResultado {
+  #juegoResultado, #figus, #paqueteFigus {
     display: flex;
     flex-direction: column;
     color: #FFFDFA;
@@ -103,5 +103,26 @@
     font-size: 60px;
     
   }
-  
+
+  #paqueteFigus { 
+    font-size: 30px;
+
+  }
+
+  #album {
+    display: flex;
+    justify-content: right;
+    margin: 100px;
+
+  }
+
+  #completarAlbum {
+    background-color: rgb(250, 123, 244);
+    color: #121212;
+    font-size: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    
+  }
+
   
