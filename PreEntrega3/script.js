@@ -11,12 +11,12 @@ let jugadorTotal = 0;
 let jugada = [];
 let computadoraTotal = 0;
 let equipo = [];
-let pilaFigus;
+let pilaFigus = [];
 const FigusPorSobre = 5;
-const arquero = "Arquero";
-const defensor = "Defensor";
-const mediocampista = "Mediocampista";
-const delantero = "Delantero";
+const arquero = "arquero";
+const defensor = "defensor";
+const mediocampista = "mediocampista";
+const delantero = "delantero";
 
 // JUEGO PIEDRA PAPEL O TIJERA
 function jugadaComputadora() {
