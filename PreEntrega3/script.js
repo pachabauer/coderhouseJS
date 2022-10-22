@@ -5,6 +5,7 @@ const mostrarPuntajeComputadora = document.getElementById("computadoraPuntaje");
 const mostrarResultadoJuego = document.getElementById("juegoResultado");
 const mostrarFigus = document.getElementById("paqueteFigus");
 const botones = document.querySelectorAll(".botones");
+window.reiniciarJuego = reiniciarJuego;
 
 let eleccionJugador;
 let jugadorTotal = 0;
@@ -12,7 +13,7 @@ let jugada = [];
 let computadoraTotal = 0;
 let equipo = [];
 let pilaFigus = [];
-let figusStorage = JSON.parse(localStorage.getItem("pilaFigus"))
+let figusStorage = JSON.parse(localStorage.getItem("pilaFigus"));
 
 const FigusPorSobre = 5;
 const arquero = "arquero";
@@ -25,7 +26,7 @@ function jugadaComputadora() {
   const elementos = ["Piedra", "Papel", "Tijera"];
   const eleccionComputadora =
     elementos[Math.floor(Math.random() * elementos.length)];
-    mostrarEleccionComputadora.textContent = `Computadora Eligió:`;
+  mostrarEleccionComputadora.textContent = `Computadora Eligió:`;
   mostrarEleccionComputadora.textContent += ` ${eleccionComputadora}`;
   console.log(`Computadora eligió: ${eleccionComputadora}`);
   return eleccionComputadora;
@@ -35,31 +36,26 @@ botones.forEach((btn) =>
   btn.addEventListener("click", (e) => {
     eleccionJugador = e.target.id;
     mostrarFigus.textContent = ``;
-    mostrarEleccionJugador.textContent = `Jugador Eligió:`
+    mostrarEleccionJugador.textContent = `Jugador Eligió:`;
     mostrarEleccionJugador.textContent += ` ${eleccionJugador}`;
     jugada = jugarRonda(eleccionJugador, jugadaComputadora());
     jugadorTotal += jugada[0];
-    mostrarPuntajeJugador.textContent = `PUNTAJE:`
-    mostrarPuntajeJugador.textContent += ` ${jugadorTotal}`;    
+    mostrarPuntajeJugador.textContent = `PUNTAJE:`;
+    mostrarPuntajeJugador.textContent += ` ${jugadorTotal}`;
     computadoraTotal += jugada[1];
-    mostrarPuntajeComputadora.textContent = `PUNTAJE:`
+    mostrarPuntajeComputadora.textContent = `PUNTAJE:`;
     mostrarPuntajeComputadora.textContent += ` ${computadoraTotal}`;
     if (jugadorTotal >= 3) {
-        mostrarResultadoJuego.textContent = "GANASTE!!!"
-        pilaFiguritas();
-        continuarJuego = !chequeoEquipoCompleto();
-        if (!continuarJuego) {
-          alert("COMPLETASTE EL ALBUM...FELICITACIONES !!!");
-        }
-        
+      mostrarResultadoJuego.textContent = "GANASTE!!!";
+      pilaFiguritas();
       jugadorTotal = 0;
       computadoraTotal = 0;
-    } else if( computadoraTotal >= 3) {
-        mostrarResultadoJuego.textContent = "PERDISTE :("
+    } else if (computadoraTotal >= 3) {
+      mostrarResultadoJuego.textContent = "PERDISTE :(";
       jugadorTotal = 0;
       computadoraTotal = 0;
     } else {
-        mostrarResultadoJuego.textContent = "";
+      mostrarResultadoJuego.textContent = "";
     }
   })
 );
@@ -139,15 +135,12 @@ function ganoHumano(puntajeTotalHumano) {
 }
 
 function juego() {
-    pilaFigus = [];
+  pilaFigus = [];
 
-  const estiloConsoleLogPuntaje =
-    "font-weight: bold; font-size: 12px; color: blue;";
-    let continuarJuego = true;
+  let continuarJuego = true;
   while (continuarJuego) {
     let playerResult = 0;
     let compuResult = 0;
-   // let resultado = jugarRonda(eleccionJugador, jugadaComputadora());
     if (jugada[0] === 1) {
       playerResult = 1;
     } else if (jugada[1] === 1) {
@@ -157,10 +150,10 @@ function juego() {
       `Game result:\nPlayer score: ${playerResult}\nComputer score: ${compuResult}`
     );
 
-      continuarJuego = !chequeoEquipoCompleto();
-      if (!continuarJuego) {
-        alert("COMPLETASTE EL ALBUM...FELICITACIONES !!!");
-      }
+    continuarJuego = !chequeoEquipoCompleto();
+    if (!continuarJuego) {
+      Swal.fire("EXCELENTE!", "COMPLETASTE EL ALBUM !!!", "success");
+    }
     return [playerResult, compuResult];
   }
 }
@@ -211,8 +204,7 @@ equipo.push(
   delantero4
 );
 
-// métodos de Array
-let equipoFiltrado = equipo.filter((dorsal) => dorsal.numero != null);
+let equipoFiltrado = equipo.filter((dorsal) => dorsal.numero !== null);
 let equipoMapeado = equipoFiltrado.map(
   (numeroNombre) => `${numeroNombre.numero} - ${numeroNombre.nombre}`
 );
@@ -225,34 +217,29 @@ function generarSobre(equipo) {
     figusSobre.push(figurita);
     cantFiguritas += 1;
   }
+
   let sobreSinComas = figusSobre.join(`\n`);
-  mostrarFigus.setAttribute('style', 'white-space: pre;');
-  mostrarFigus.textContent = `Te tocaron estas figuritas:\r\n${sobreSinComas.replace(/,/g, '\n')}`;
+  mostrarFigus.setAttribute("style", "white-space: pre;");
+  mostrarFigus.textContent = `Te tocaron estas figuritas:\r\n${sobreSinComas.replace(
+    /,/g,
+    "\n"
+  )}`;
   return figusSobre;
 }
 
+
+
 function pilaFiguritas() {
-  const estiloPila = "font-weight: bold; font-size: 12px; color: green;";
   pilaFigus = pilaFigus.concat(generarSobre(equipoMapeado));
-  console.log(
-    `%cTENES ESTAS FIGURITAS EN TU PILA: ${pilaFigus.join(", ")}`,
-    estiloPila
-  );
-  localStorage.setItem("pilaFigus",JSON.stringify(pilaFigus + figusStorage));
+  localStorage.setItem("pilaFigus", JSON.stringify(pilaFigus + figusStorage));
 }
 
 function chequeoEquipoCompleto() {
-  const estiloChequeo = "font-weight: bold; font-size: 12px; color: brown;";
-  const chequeo = equipoMapeado.filter((x) => !pilaFigus.includes(x));
-  if (chequeo.length !== 0) {
-    console.log(
-      `%cTE FALTAN ESTAS FIGURITAS PARA COMPLETAR EL ALBUM: ${chequeo.join(
-        ", "
-      )}`,
-      estiloChequeo
-    );
+  if(figusStorage) {
+    const chequeo = equipoMapeado.filter((x) => !figusStorage.includes(x));
+    console.log(chequeo);
+    return chequeo.length === 0;
   }
-  return chequeo.length === 0;
 }
 
 function reiniciarJuego() {
@@ -260,5 +247,3 @@ function reiniciarJuego() {
 }
 
 juego();
-
-
