@@ -6,20 +6,21 @@ let arqueros = document.getElementById("arquero");
 let defensores = document.getElementById("defensor");
 let mediocampistas = document.getElementById("mediocampista");
 let delanteros = document.getElementById("delantero");
+let pilaFigusStorage = JSON.parse(localStorage.getItem("pilaFigus"))
 function agregarJugador (jugador) {
         let nombre = jugador.nombre; 
         let sinNumero = Math.floor(Math.random() * 100); /* genero un número aleatorio para los jugadores que 
                                     no tienen número en la API  */    
         let numero = jugador.numero ?? sinNumero;
         let posicion = jugador.posicion;
-        let comparacion = `${nombre} - ${numero}`
+        let comparacion = `${numero} - ${nombre}`
         console.log(comparacion)
-        console.log(window.pilaFigus)
+        console.log(pilaFigusStorage)
         let contenedorJugadores = document.createElement("div");
-        if (!pilaFigus.includes(comparacion)) {
+        if (!pilaFigusStorage.includes(comparacion)) {
             contenedorJugadores.classList.add(posicion);
         } else { 
-            contenedorJugadores.classList.add(`si`);
+            contenedorJugadores.classList.add(`obtenidos`);
 
         }
         
@@ -57,7 +58,6 @@ async function mostrarEquipo () {
     const data = equipo;
     console.log(data);
     data.forEach(player => {
-        console.log(player)
             agregarJugador(player);
     }
     );

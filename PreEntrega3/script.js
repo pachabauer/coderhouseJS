@@ -12,6 +12,8 @@ let jugada = [];
 let computadoraTotal = 0;
 let equipo = [];
 let pilaFigus = [];
+let figusStorage = JSON.parse(localStorage.getItem("pilaFigus"))
+
 const FigusPorSobre = 5;
 const arquero = "arquero";
 const defensor = "defensor";
@@ -236,6 +238,7 @@ function pilaFiguritas() {
     `%cTENES ESTAS FIGURITAS EN TU PILA: ${pilaFigus.join(", ")}`,
     estiloPila
   );
+  localStorage.setItem("pilaFigus",JSON.stringify(pilaFigus + figusStorage));
 }
 
 function chequeoEquipoCompleto() {
@@ -252,4 +255,10 @@ function chequeoEquipoCompleto() {
   return chequeo.length === 0;
 }
 
+function reiniciarJuego() {
+  localStorage.removeItem("pilaFigus");
+}
+
 juego();
+
+

@@ -109,20 +109,27 @@
 
   }
 
-  #album {
+  #album , #reiniciar {
     display: flex;
     justify-content: right;
     margin: 100px;
 
   }
 
-  #completarAlbum {
+  #completarAlbum , #reiniciarJuego{
     background-color: rgb(250, 123, 244);
     color: #121212;
     font-size: 50px;
     border-radius: 10px;
     font-weight: bold;
-    
+  }
+
+  #reiniciarJuego {
+    background-color: rgb(66, 253, 25);
+    font-size: 20px;
+
+
+
   }
 
   
