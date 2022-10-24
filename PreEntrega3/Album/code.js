@@ -83,11 +83,6 @@ function limpiarEquipo() {
   delanteros.innerHTML = "";
 }
 
-function cambiarColorFondo() {
-  let estilo = getComputedStyle(document.body);
-  document.body.style.background = estilo.getPropertyValue; //seleccionar todos los botones, tomar con un addeventlistener su color de fondo y usarlo
-}
-
 function actualizarEquipo(id) {
   limpiarEquipo();
   mostrarEquipo(id);

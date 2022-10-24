@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  color: #fac650;
+  color: #FFE81F;
   font-family: myFirstFont;
   margin: 30px;
   font-size: 30px;
@@ -27,7 +27,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fac650;
+  color: #FFE81F; 
   font-family: myFirstFont;
   margin: 20px;
 }
@@ -51,7 +51,7 @@ h4 {
 .seleccion,
 #juegoResultado {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   font-family: myFirstFont;
   margin: 10px;
 }
@@ -82,19 +82,44 @@ h4 {
 #Papel,
 #Tijera {
   font-size: 100px;
-  background-color: rgba(18, 18, 18, 0);
-  border: none;
+  background-color:#24272E;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  border: 3px solid #24272E;
 }
+
+#Piedra:hover {
+  cursor: pointer;
+  border-color: white;
+  transition-duration: 1s;
+}
+
+#Papel:hover {
+  cursor: pointer;
+  border-color: white;
+  transition-duration: 1s;
+}
+
+#Tijera:hover {
+  cursor: pointer;
+  border-color: white;
+  transition-duration: 1s;
+  }
+
 
 #jugadorEleccion,
 #computadoraEleccion {
   font-size: 40px;
-  color: rgb(255, 11, 11);
+  color: #e6007e;
   font-weight: bold;
 }
 
 #computadoraEleccion {
-  color: rgba(248, 102, 17);
+  color: #fac650;
 }
 
 #juegoResultado,
@@ -113,23 +138,64 @@ h4 {
 }
 
 #album,
-#reiniciar {
+#reiniciar,
+#trampita {
   display: flex;
   justify-content: right;
-  margin: 100px;
+  margin-top: 40px;
+  margin-right: 100px;
+  margin-left: 100px;
 }
 
+
 #completarAlbum,
-#reiniciarJuego {
-  background-color: rgb(250, 123, 244);
+#reiniciarJuego,
+#yapa {
+  background-color: #e6007e;
   color: #121212;
   font-size: 50px;
   border-radius: 10px;
   font-weight: bold;
   padding: 20px;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  border: 3px solid #121212;
+  width: 250px;
+  font-family: myFirstFont;
+
+}
+
+#completarAlbum:hover{
+  background-color: #121212;;
+  color: #e6007e;
+  border: 3px solid #e6007e;
+  
 }
 
 #reiniciarJuego {
-  background-color: rgb(66, 253, 25);
+  background-color: #3bf359;
   font-size: 20px;
+}
+
+#reiniciarJuego:hover{
+  background-color: #121212;;
+  color: #3bf359;
+  border: 3px solid #3bf359;
+  
+}
+
+#yapa {
+  background-color: #121212;
+  color: #EB212E;
+  border: 3px solid #EB212E;
+  font-size: 22px;
+}
+
+#yapa:hover{
+  background-color: #EB212E;;
+  color: #121212;
+  border: 3px solid #EB212E;
+  
 }

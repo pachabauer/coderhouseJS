@@ -1,11 +1,14 @@
 const mostrarEleccionJugador = document.getElementById("jugadorEleccion");
-const mostrarEleccionComputadora = document.getElementById("computadoraEleccion");
+const mostrarEleccionComputadora = document.getElementById(
+  "computadoraEleccion"
+);
 const mostrarPuntajeJugador = document.getElementById("jugadorPuntaje");
 const mostrarPuntajeComputadora = document.getElementById("computadoraPuntaje");
 const mostrarResultadoJuego = document.getElementById("juegoResultado");
 const mostrarFigus = document.getElementById("paqueteFigus");
 const botones = document.querySelectorAll(".botones");
 window.reiniciarJuego = reiniciarJuego;
+window.yapa = yapa;
 
 let eleccionJugador;
 let jugadorTotal = 0;
@@ -20,6 +23,7 @@ const arquero = "arquero";
 const defensor = "defensor";
 const mediocampista = "mediocampista";
 const delantero = "delantero";
+let chequeo;
 
 // JUEGO PIEDRA PAPEL O TIJERA
 function jugadaComputadora() {
@@ -227,23 +231,55 @@ function generarSobre(equipo) {
   return figusSobre;
 }
 
-
-
 function pilaFiguritas() {
   pilaFigus = pilaFigus.concat(generarSobre(equipoMapeado));
   localStorage.setItem("pilaFigus", JSON.stringify(pilaFigus + figusStorage));
 }
 
 function chequeoEquipoCompleto() {
-  if(figusStorage) {
-    const chequeo = equipoMapeado.filter((x) => !figusStorage.includes(x));
-    console.log(chequeo);
+  if (figusStorage) {
+    chequeo = equipoMapeado.filter((x) => !figusStorage.includes(x));
     return chequeo.length === 0;
   }
 }
 
 function reiniciarJuego() {
-  localStorage.removeItem("pilaFigus");
+  Swal.fire({
+    title: 'Estás seguro?',
+    text: "Vas a perder todas las figus que juntaste!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'SI!',
+    cancelButtonText: 'NO!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem("pilaFigus");
+      Swal.fire(
+        'Reiniciaste!',
+        'Que disfrutes de la nueva partida.',
+        'success'
+      )
+    }
+  })
+}
+
+function yapa() {
+  if (figusStorage) {
+  let yapa = chequeo[Math.floor(Math.random() * chequeo.length)];
+  localStorage.setItem("pilaFigus", JSON.stringify(pilaFigus + figusStorage + yapa));
+  Swal.fire({
+    title: 'El lado oscuro de la fuerza te regala 1 figu!!',
+    text: `Te tocó: ${yapa}`,
+    imageUrl:  'imagenes/darthVader.jpg',
+    imageWidth: 300,
+    imageHeight: 200,
+    imageAlt: 'Custom image',
+  })
+} else {
+  Swal.fire('Debes ganar una partida antes de probar el lado oscuro, padawan')
+}
 }
 
 juego();
