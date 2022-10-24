@@ -105,6 +105,7 @@ h2 {
   font-weight: bold;
   margin: 10px;
   padding: 10px;
+  cursor: pointer;
 }
 
 /* EQUIPOS */
@@ -128,4 +129,17 @@ h2 {
 #boca {
   background-image: linear-gradient(blue, yellow);
   font-size: 20px;
+}
+
+#explicacion { 
+  display: flex;
+  justify-content: center;
+  background-color: rgb(93, 236, 247);
+  color: #121212;
+  font-size: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin: 10px;
+  padding: 10px;
+
 }

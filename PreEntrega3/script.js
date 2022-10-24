@@ -38,28 +38,49 @@ function jugadaComputadora() {
 
 botones.forEach((btn) =>
   btn.addEventListener("click", (e) => {
-    eleccionJugador = e.target.id;
-    mostrarFigus.textContent = ``;
-    mostrarEleccionJugador.textContent = `Jugador Eligió:`;
-    mostrarEleccionJugador.textContent += ` ${eleccionJugador}`;
-    jugada = jugarRonda(eleccionJugador, jugadaComputadora());
-    jugadorTotal += jugada[0];
-    mostrarPuntajeJugador.textContent = `PUNTAJE:`;
-    mostrarPuntajeJugador.textContent += ` ${jugadorTotal}`;
-    computadoraTotal += jugada[1];
-    mostrarPuntajeComputadora.textContent = `PUNTAJE:`;
-    mostrarPuntajeComputadora.textContent += ` ${computadoraTotal}`;
-    if (jugadorTotal >= 3) {
-      mostrarResultadoJuego.textContent = "GANASTE!!!";
-      pilaFiguritas();
-      jugadorTotal = 0;
-      computadoraTotal = 0;
-    } else if (computadoraTotal >= 3) {
-      mostrarResultadoJuego.textContent = "PERDISTE :(";
-      jugadorTotal = 0;
-      computadoraTotal = 0;
+    let continuarJuego = !chequeoEquipoCompleto();
+    if (!continuarJuego) {
+      Swal.fire("JUEGO COMPLETADO!", "REINICIA PARA CONTINUAR", "success");
     } else {
-      mostrarResultadoJuego.textContent = "";
+      eleccionJugador = e.target.id;
+      mostrarFigus.textContent = ``;
+      mostrarEleccionJugador.textContent = `Jugador Eligió:`;
+      mostrarEleccionJugador.textContent += ` ${eleccionJugador}`;
+      jugada = jugarRonda(eleccionJugador, jugadaComputadora());
+      jugadorTotal += jugada[0];
+      mostrarPuntajeJugador.textContent = `PUNTAJE:`;
+      mostrarPuntajeJugador.textContent += ` ${jugadorTotal}`;
+      computadoraTotal += jugada[1];
+      mostrarPuntajeComputadora.textContent = `PUNTAJE:`;
+      mostrarPuntajeComputadora.textContent += ` ${computadoraTotal}`;
+      if (jugadorTotal >= 3) {
+        Swal.fire({
+          title: "GANASTE !!!",
+          icon: "success",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        pilaFiguritas();
+        jugadorTotal = 0;
+        computadoraTotal = 0;
+      } else if (computadoraTotal >= 3) {
+        Swal.fire({
+          title: "PERDISTE - la próxima es tuya!!!",
+          icon: "error",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        jugadorTotal = 0;
+        computadoraTotal = 0;
+      }
     }
   })
 );
@@ -122,8 +143,6 @@ function ganoHumano(puntajeTotalHumano) {
   let ganador;
   let paqueteFiguritas;
   let ganadorHumano = puntajeTotalHumano === 3;
-  const estiloConsoleLogGanador =
-    "font-weight: bold; font-size: 14px; color: red;";
   if (ganadorHumano) {
     ganador = "Humano";
     paqueteFiguritas = `\nGANASTE ${FigusPorSobre} FIGURITAS PARA LLENAR EL ÁLBUM`;
@@ -140,7 +159,6 @@ function ganoHumano(puntajeTotalHumano) {
 
 function juego() {
   pilaFigus = [];
-
   let continuarJuego = true;
   while (continuarJuego) {
     let playerResult = 0;
@@ -224,7 +242,7 @@ function generarSobre(equipo) {
 
   let sobreSinComas = figusSobre.join(`\n`);
   mostrarFigus.setAttribute("style", "white-space: pre;");
-  mostrarFigus.textContent = `Te tocaron estas figuritas:\r\n${sobreSinComas.replace(
+  mostrarFigus.textContent = `TE TOCARON ESTAS FIGURITAS:\r\n${sobreSinComas.replace(
     /,/g,
     "\n"
   )}`;
@@ -245,41 +263,53 @@ function chequeoEquipoCompleto() {
 
 function reiniciarJuego() {
   Swal.fire({
-    title: 'Estás seguro?',
+    title: "Estás seguro?",
     text: "Vas a perder todas las figus que juntaste!",
-    icon: 'warning',
+    icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'SI!',
-    cancelButtonText: 'NO!'
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "SI!",
+    cancelButtonText: "NO!",
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.removeItem("pilaFigus");
       Swal.fire(
-        'Reiniciaste!',
-        'Que disfrutes de la nueva partida.',
-        'success'
-      )
+        "Reiniciaste!",
+        "Que disfrutes de la nueva partida.",
+        "success"
+      );
+      setTimeout(window.location.reload.bind(window.location), 2000);
     }
-  })
+  });
 }
 
 function yapa() {
-  if (figusStorage) {
-  let yapa = chequeo[Math.floor(Math.random() * chequeo.length)];
-  localStorage.setItem("pilaFigus", JSON.stringify(pilaFigus + figusStorage + yapa));
-  Swal.fire({
-    title: 'El lado oscuro de la fuerza te regala 1 figu!!',
-    text: `Te tocó: ${yapa}`,
-    imageUrl:  'imagenes/darthVader.jpg',
-    imageWidth: 300,
-    imageHeight: 200,
-    imageAlt: 'Custom image',
-  })
-} else {
-  Swal.fire('Debes ganar una partida antes de probar el lado oscuro, padawan')
-}
+  let continuarJuego = !chequeoEquipoCompleto();
+  console.log(pilaFigus);
+  if (figusStorage && chequeo.length !== 0) {
+    let yapa = chequeo[Math.floor(Math.random() * chequeo.length)];
+    localStorage.setItem(
+      "pilaFigus",
+      JSON.stringify(pilaFigus + figusStorage + yapa)
+    );
+    Swal.fire({
+      title: "El lado oscuro de la fuerza te regala 1 figu!!",
+      text: `Te tocó: ${yapa}`,
+      imageUrl: "imagenes/darthVader.jpg",
+      imageWidth: 300,
+      imageHeight: 200,
+      imageAlt: "Custom image",
+    });
+    setTimeout(() => {
+      window.location.reload('Album/index.html') } , 2000)
+  } else if (!continuarJuego) {
+    Swal.fire("JUEGO COMPLETADO!", "REINICIA PARA CONTINUAR", "success");
+  } else {
+    Swal.fire(
+      "Debes ganar una partida antes de probar el lado oscuro, padawan"
+    );
+  }
 }
 
 juego();

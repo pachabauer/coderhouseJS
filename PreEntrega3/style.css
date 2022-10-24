@@ -130,7 +130,8 @@ h4 {
   color: #fffdfa;
   align-items: center;
   margin: 40px;
-  font-size: 60px;
+  font-family: myFirstFont;
+  font-weight: bold;
 }
 
 #paqueteFigus {
