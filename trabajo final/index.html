@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MINIJUEGO</title>
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>PIEDRA PAPEL O TIJERA</h1>
+    </div>
+    <div class="explicacion">
+      <h4>Ganale a la computadora.</h4>
+      <h4>Gana el primero que llega a 3 puntos</h4>
+      <h4>Por cada victoria te llevás un paquete de figuritas</h4>
+    </div>
+    <div class="seleccion">
+      <div id="jugadorEleccion">Jugador Eligió:</div>
+      <div id="computadoraEleccion">Computadora Eligió:</div>
+    </div>
+
+    <div class="puntajes">
+      <div id="jugadorPuntaje">PUNTAJE:</div>
+      <div id="computadoraPuntaje">PUNTAJE:</div>
+    </div>
+
+    <div class="botones">
+      <button id="Piedra">✊</button>
+      <button id="Papel">✋</button>
+      <button id="Tijera">✌</button>
+    </div>
+    <div id="paqueteFigus"></div>
+    <div id="album">
+      <button onclick="document.location.href ='Album/index.html' " id="completarAlbum">ALBUM</button>
+    </div>
+    <div id="trampita">
+      <button onclick="yapa()" id="yapa">DARK SIDE</button>
+    </div>
+    <div id="reiniciar">
+      <button onclick="reiniciarJuego()" id="reiniciarJuego">REINICIAR JUEGO</button>
+    </div>
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="module" src="script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  </body>
+</html>

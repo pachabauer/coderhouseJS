@@ -1,0 +1,202 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(fonts/Action_Man.ttf);
+}
+
+body {
+  background-color: rgba(18, 18, 18);
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #FFE81F;
+  font-family: myFirstFont;
+  margin: 30px;
+  font-size: 30px;
+  max-height: 100px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.explicacion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #FFE81F; 
+  font-family: myFirstFont;
+  margin: 20px;
+}
+
+h4 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.puntajes,
+#jugadorEleccion,
+#computadoraEleccion {
+  align-items: center;
+  color: #fffdfa;
+  font-size: 26px;
+  font-family: myFirstFont;
+  font-weight: bold;
+}
+
+.botones,
+.seleccion,
+#juegoResultado {
+  display: flex;
+  justify-content: space-around;
+  font-family: myFirstFont;
+  margin: 10px;
+}
+
+.botones {
+  margin: 50px;
+}
+
+.puntajes {
+  display: flex;
+}
+
+#jugadorPuntaje,
+#computadoraPuntaje,
+#jugadorEleccion,
+#computadoraEleccion {
+  display: flex;
+  justify-content: center;
+  width: 50%; /* Can be in percentage also. */
+  margin: 0;
+}
+
+.seleccion {
+  align-items: flex-start;
+}
+
+#Piedra,
+#Papel,
+#Tijera {
+  font-size: 100px;
+  background-color:#24272E;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  border: 3px solid #24272E;
+}
+
+#Piedra:hover {
+  cursor: pointer;
+  border-color: white;
+  transition-duration: 1s;
+}
+
+#Papel:hover {
+  cursor: pointer;
+  border-color: white;
+  transition-duration: 1s;
+}
+
+#Tijera:hover {
+  cursor: pointer;
+  border-color: white;
+  transition-duration: 1s;
+  }
+
+
+#jugadorEleccion,
+#computadoraEleccion {
+  font-size: 40px;
+  color: #e6007e;
+  font-weight: bold;
+}
+
+#computadoraEleccion {
+  color: #fac650;
+}
+
+#juegoResultado,
+#figus,
+#paqueteFigus {
+  display: flex;
+  flex-direction: column;
+  color: #fffdfa;
+  align-items: center;
+  margin: 40px;
+  font-family: myFirstFont;
+  font-weight: bold;
+}
+
+#paqueteFigus {
+  font-size: 30px;
+}
+
+#album,
+#reiniciar,
+#trampita {
+  display: flex;
+  justify-content: right;
+  margin-top: 40px;
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+
+#completarAlbum,
+#reiniciarJuego,
+#yapa {
+  background-color: #e6007e;
+  color: #121212;
+  font-size: 50px;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  border: 3px solid #121212;
+  width: 250px;
+  font-family: myFirstFont;
+
+}
+
+#completarAlbum:hover{
+  background-color: #121212;;
+  color: #e6007e;
+  border: 3px solid #e6007e;
+  
+}
+
+#reiniciarJuego {
+  background-color: #3bf359;
+  font-size: 20px;
+}
+
+#reiniciarJuego:hover{
+  background-color: #121212;;
+  color: #3bf359;
+  border: 3px solid #3bf359;
+  
+}
+
+#yapa {
+  background-color: #121212;
+  color: #EB212E;
+  border: 3px solid #EB212E;
+  font-size: 22px;
+}
+
+#yapa:hover{
+  background-color: #EB212E;;
+  color: #121212;
+  border: 3px solid #EB212E;
+  
+}

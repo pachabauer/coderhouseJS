@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="document.location.href ='../index.html' " id="volver">
+      VOLVER A JUEGO
+    </button>
+    <div id="explicacion">
+      LOS JUGADORES SE IRAN PINTANDO A MEDIDA QUE TE SALGAN EN LAS FIGURITAS
+    </div>
+    <div id="clickeable">HAZ CLICK EN UN EQUIPO PARA VER SUS JUGADORES</div>
+    <div id="grupos">
+      <div id="grupoA">
+        GRUPO A
+        <div id="palmeiras" onclick="actualizarEquipo(121)">PALMEIRAS</div>
+        <div id="emelec" onclick="actualizarEquipo(1148)">EMELEC</div>
+        <div id="tachira" class="TACHIRA" onclick="actualizarEquipo(2807)">
+          D.TACHIRA
+        </div>
+        <div id="ipetrolero" onclick="actualizarEquipo(15702)">I.PETROLERO</div>
+      </div>
+      <div id="grupoB">
+        GRUPO B
+        <div id="aparanaense" onclick="actualizarEquipo(134)">A.PARANAENSE</div>
+        <div id="libertad" onclick="actualizarEquipo(1179)">LIBERTAD</div>
+        <div id="caracas" onclick="actualizarEquipo(2808)">CARACAS</div>
+        <div id="strongest" onclick="actualizarEquipo(3711)">THE STRONGEST</div>
+      </div>
+      <div id="grupoC">
+        GRUPO C
+        <div id="nacional" onclick="actualizarEquipo(2356)">NACIONAL U</div>
+        <div id="velez" onclick="actualizarEquipo(438)">VELEZ</div>
+        <div id="bragantino" onclick="actualizarEquipo(794)">BRAGANTINO</div>
+        <div id="estudiantes" onclick="actualizarEquipo(450)">
+          ESTUDIANTES LP
+        </div>
+      </div>
+      <div id="grupoD">
+        GRUPO D
+        <div id="mineiro" onclick="actualizarEquipo(125)">A.MINEIRO</div>
+        <div id="iDelValle" onclick="actualizarEquipo(1153)">I.DEL VALLE</div>
+        <div id="tolima" onclick="actualizarEquipo(1142)">D.TOLIMA</div>
+        <div id="aCali" onclick="actualizarEquipo(1138)">A. CALI</div>
+      </div>
+      <div id="grupoE">
+        GRUPO E
+        <div id="boca" onclick="actualizarEquipo(451)">BOCA JRS</div>
+        <div id="corinthians" onclick="actualizarEquipo(131)">CORINTHIANS</div>
+        <div id="dCali" onclick="actualizarEquipo(1127)">DEPORTIVO CALI</div>
+        <dvi id="always" onclick="actualizarEquipo(3700)">ALWAYS READY</dvi>
+      </div>
+      <div id="grupoF">
+        GRUPO F
+        <div id="river" onclick="actualizarEquipo(435)">RIVER PLATE</div>
+        <div id="coloColo" onclick="actualizarEquipo(2315)">COLO COLO</div>
+        <div id="alianza" onclick="actualizarEquipo(2553)">ALIANZA LIMA</div>
+        <div id="fortaleza" onclick="actualizarEquipo(154)">FORTALEZA</div>
+      </div>
+      <div id="grupoG">
+        GRUPO G
+        <div id="penarol" onclick="actualizarEquipo(2348)">PEÑAROL</div>
+        <div id="cerro" onclick="actualizarEquipo(1176)">CERRO PORTEÑO</div>
+        <div id="colon" onclick="actualizarEquipo(448)">COLON</div>
+        <div id="olimpia" onclick="actualizarEquipo(1182)">OLIMPIA</div>
+      </div>
+      <div id="grupoH">
+        GRUPO H
+        <div id="flamengo" onclick="actualizarEquipo(127)">FLAMENGO</div>
+        <div id="catolica" onclick="actualizarEquipo(2994)">U.CATOLICA</div>
+        <div id="cristal" onclick="actualizarEquipo(2546)">
+          SPORTING CRISTAL
+        </div>
+        <div id="talleres" onclick="actualizarEquipo(456)">TALLERES</div>
+      </div>
+    </div>
+
+    <div class="jugadores" id="jugadores">
+      <div class="arquero" id="arquero">
+        <div id="texto">ARQUEROS</div>
+      </div>
+      <div class="defensor" id="defensor">
+        <div id="texto">DEFENSORES</div>
+      </div>
+      <div class="mediocampista" id="mediocampista">
+        <div id="texto">MEDIOCAMPISTAS</div>
+      </div>
+      <div class="delantero" id="delantero">
+        <div id="texto">DELANTEROS</div>
+      </div>
+    </div>
+    <link rel="stylesheet" href="style.css" />
+    <script src="../script.js"></script>
+    <script src="code.js"></script>
+  </body>
+</html>
