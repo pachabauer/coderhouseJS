@@ -7,6 +7,8 @@ const options = {
 };
 
 let obj;
+let nombresJugadores = [];
+
 
 /* Creo un array con todos los id de jugadores que no tienen foto. 
     Esto lo hice a mano, uno x uno porque no encontré la forma de acceder al 
@@ -44,8 +46,21 @@ const jugadoresSinFoto = [
   311294, 311295, 352296, 362878, 362879, 362880, 362882, 362881, 318927,
   362883, 321835, 353997, 313653, 321836, 349797, 363394, 311356, 363396,
   311361, 355305, 311362, 194903, 363397, 311363, 363399, 382917, 194905,
-  322324, 363400,
+  322324, 363400, 323788
 ];
+
+const idEquipos = [
+  121,1148,2807,15702,
+  134,1179,2808,3711,
+  2356,438,794,450,
+  125,1153,1142,1138,
+  451,131,1127,3700,
+  435,2315,2553,154,
+  2348,1176,448,1182,
+  127,2994,2546,456
+];
+
+var equipoRandom = idEquipos[Math.floor(Math.random()*idEquipos.length)];
 
 /* tabla equipos por ID OBTENIDOS DE LA API // id players sin foto
 GRUPO A
@@ -98,6 +113,7 @@ GRUPO H
 456 talleres // {363394, 311356, 363396, 311361, 355305, 311362, 194903, 363397, 311363, 363399, 382917, 194905, 322324, 363400}
 */
 
+let equipoDatos = document.getElementById("equipoDatos");
 let mostrarJugadores = document.getElementById("jugadores");
 let arqueros = document.getElementById("arquero");
 let defensores = document.getElementById("defensor");
@@ -105,7 +121,17 @@ let mediocampistas = document.getElementById("mediocampista");
 let delanteros = document.getElementById("delantero");
 let pilaFigusStorage = JSON.parse(localStorage.getItem("pilaFigus"));
 
-function agregarJugador(jugador) {
+function agregarNombreEquipo(nombre,logo){
+  let nombreEquipo = document.createElement("div");
+  let logoEquipo = document.createElement("img");
+  nombreEquipo.classList.add("nombreEquipo");
+  nombreEquipo.innerText = nombre;
+  logoEquipo.classList.add("logoEquipo");
+  logoEquipo.src = logo;
+  equipoDatos.append(nombreEquipo,logoEquipo)
+}
+
+function agregarJugador(jugador, club) {
   let nombre = jugador.name;
   let foto = jugador.photo;
   let sinNumero = Math.floor(
@@ -113,9 +139,13 @@ function agregarJugador(jugador) {
   ); /* genero un número aleatorio para los jugadores que 
                                     no tienen número en la API  */
   let numero = jugador.number ?? sinNumero;
+  let nombreClub = club;
   let position = jugador.position;
-  let comparacion = `${numero} - ${nombre}`;
+  let comparacion = `${numero} - ${nombre} - ${nombreClub}`;
   console.log(comparacion);
+  nombresJugadores.push(comparacion)
+  localStorage.setItem("equipo", JSON.stringify(nombresJugadores));
+
   let contenedorJugadores = document.createElement("div");
   contenedorJugadores.classList.add(position);
   if (pilaFigusStorage) {
@@ -179,17 +209,20 @@ async function mostrarEquipo(teamId) {
     options
   );
   const data = await resp.json();
-  console.log(data.response[0].players);
+  console.log(data.response[0]);
+  const club = data.response[0].team;
+  agregarNombreEquipo(club.name,  club.logo)
   data.response[0].players.forEach((player) => {
     if (!jugadoresSinFoto.includes(player.id)) {
-      agregarJugador(player);
+      agregarJugador(player, club.name);
     }
   });
 }
 
-mostrarEquipo("127");
+mostrarEquipo(equipoRandom);
 
 function limpiarEquipo() {
+  equipoDatos.innerHTML = "";
   mostrarJugadores.innerHTML = "";
   arqueros.innerHTML = "";
   defensores.innerHTML = "";

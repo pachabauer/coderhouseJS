@@ -14,6 +14,20 @@ body {
   border-radius: 20px;
 }
 
+#equipoDatos{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
+  background-color: #494949;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+
+}
+
 #jugadores {
   display: flex;
   flex-direction: row;
@@ -124,8 +138,8 @@ h2 {
 #explicacion { 
   display: flex;
   justify-content: center;
-  background-color: rgb(93, 236, 247);
-  color: #121212;
+  background-color: #121212;
+  color: white;
   font-size: 20px;
   border-radius: 10px;
   font-weight: bold;
@@ -137,8 +151,8 @@ h2 {
 #clickeable{
   display: flex;
   justify-content: center;
-  background-color: rgb(93, 236, 247);
-  color: #121212;
+  background-color: #121212;
+  color: white;
   font-size: 20px;
   border-radius: 10px;
   font-weight: bold;

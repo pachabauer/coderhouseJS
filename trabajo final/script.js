@@ -14,11 +14,11 @@ let eleccionJugador;
 let jugadorTotal = 0;
 let jugada = [];
 let computadoraTotal = 0;
-let equipo = [];
+let equipo = JSON.parse(localStorage.getItem("equipo"));
 let pilaFigus = [];
 let figusStorage = JSON.parse(localStorage.getItem("pilaFigus"));
 
-const FigusPorSobre = 5;
+const FigusPorSobre = 40;
 const arquero = "arquero";
 const defensor = "defensor";
 const mediocampista = "mediocampista";
@@ -69,7 +69,7 @@ botones.forEach((btn) =>
         computadoraTotal = 0;
       } else if (computadoraTotal >= 3) {
         Swal.fire({
-          title: "PERDISTE - la próxima es tuya!!!",
+          title: "PERDISTE - la próxima partida es tuya rey!!!",
           icon: "error",
           showClass: {
             popup: "animate__animated animate__fadeInDown",
@@ -180,62 +180,13 @@ function juego() {
   }
 }
 
-// CREACION DE JUGADORES , SOBRE FIGURITAS Y PILA DE FIGURITAS
-
-// defino función constructora para agregar jugadores
-function Jugador(id, nombre, edad, numero, posicion) {
-  this.id = id;
-  this.nombre = nombre;
-  this.edad = edad;
-  this.numero = numero;
-  this.posicion = posicion;
-}
-
-let arquero1 = new Jugador(1, "F.Armani", 36, 1, arquero);
-let arquero2 = new Jugador(2, "E.Centurión", 25, null, arquero);
-let defensor1 = new Jugador(3, "J.Maidana", 37, 4, defensor);
-let defensor2 = new Jugador(4, "R.Rojas", 26, 2, defensor);
-let defensor3 = new Jugador(5, "M.Herrera", 24, 15, defensor);
-let defensor4 = new Jugador(6, "P.Diaz", 28, 17, defensor);
-let defensor5 = new Jugador(7, "H.Martinez", 24, null, defensor);
-let mediocampista1 = new Jugador(8, "B.Zuculini", 29, 5, mediocampista);
-let mediocampista2 = new Jugador(9, "J.Quintero", 29, 10, mediocampista);
-let mediocampista3 = new Jugador(10, "N. De la Cruz", 25, 11, mediocampista);
-let mediocampista4 = new Jugador(11, "E.Barco", 23, null, mediocampista);
-let delantero1 = new Jugador(12, "M.Suarez", 34, 7, delantero);
-let delantero2 = new Jugador(13, "M.Borja", 29, 9, delantero);
-let delantero3 = new Jugador(14, "P.Solari", 21, 14, delantero);
-let delantero4 = new Jugador(15, "L.Beltrán", 21, null, delantero);
-
-// agrego los jugadores al Array
-equipo.push(
-  arquero1,
-  arquero2,
-  defensor1,
-  defensor2,
-  defensor3,
-  defensor4,
-  defensor5,
-  mediocampista1,
-  mediocampista2,
-  mediocampista3,
-  mediocampista4,
-  delantero1,
-  delantero2,
-  delantero3,
-  delantero4
-);
-
-let equipoFiltrado = equipo.filter((dorsal) => dorsal.numero !== null);
-let equipoMapeado = equipoFiltrado.map(
-  (numeroNombre) => `${numeroNombre.numero} - ${numeroNombre.nombre}`
-);
+// CREACION DE SOBRE Y PILA DE FIGURITAS
 
 function generarSobre(equipo) {
   let cantFiguritas = 0;
   let figusSobre = [];
   while (cantFiguritas < FigusPorSobre) {
-    let figurita = equipo[Math.floor(Math.random() * equipoMapeado.length)];
+    let figurita = equipo[Math.floor(Math.random() * equipo.length)];
     figusSobre.push(figurita);
     cantFiguritas += 1;
   }
@@ -250,13 +201,13 @@ function generarSobre(equipo) {
 }
 
 function pilaFiguritas() {
-  pilaFigus = pilaFigus.concat(generarSobre(equipoMapeado));
+  pilaFigus = pilaFigus.concat(generarSobre(equipo));
   localStorage.setItem("pilaFigus", JSON.stringify(pilaFigus + figusStorage));
 }
 
 function chequeoEquipoCompleto() {
   if (figusStorage) {
-    chequeo = equipoMapeado.filter((x) => !figusStorage.includes(x));
+    chequeo = equipo.filter((x) => !figusStorage.includes(x));
     return chequeo.length === 0;
   }
 }
@@ -274,6 +225,7 @@ function reiniciarJuego() {
   }).then((result) => {
     if (result.isConfirmed) {
       localStorage.removeItem("pilaFigus");
+      localStorage.removeItem("equipo");
       Swal.fire(
         "Reiniciaste!",
         "Que disfrutes de la nueva partida.",
