@@ -120,6 +120,8 @@ let defensores = document.getElementById("defensor");
 let mediocampistas = document.getElementById("mediocampista");
 let delanteros = document.getElementById("delantero");
 let pilaFigusStorage = JSON.parse(localStorage.getItem("pilaFigus"));
+const equiposId = document.querySelectorAll(".idS");
+
 
 function agregarNombreEquipo(nombre,logo){
   let nombreEquipo = document.createElement("div");
@@ -209,17 +211,28 @@ async function mostrarEquipo(teamId) {
     options
   );
   const data = await resp.json();
-  console.log(data.response[0]);
-  const club = data.response[0].team;
+  const club = await data.response[0]?.team;
+  if (club) {
   agregarNombreEquipo(club.name,  club.logo)
   data.response[0].players.forEach((player) => {
     if (!jugadoresSinFoto.includes(player.id)) {
       agregarJugador(player, club.name);
     }
   });
+} 
 }
 
-mostrarEquipo(equipoRandom);
+async function elegirEquipo() {
+   equiposId.forEach((id => {
+    id.addEventListener("click", (e) => {
+      return e.target.dataset.id;
+  })
+})
+  )
+}
+
+//elegirEquipo();
+mostrarEquipo(elegirEquipo);
 
 function limpiarEquipo() {
   equipoDatos.innerHTML = "";

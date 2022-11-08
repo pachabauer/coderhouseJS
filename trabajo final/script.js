@@ -69,7 +69,7 @@ botones.forEach((btn) =>
         computadoraTotal = 0;
       } else if (computadoraTotal >= 3) {
         Swal.fire({
-          title: "PERDISTE - la próxima partida es tuya rey!!!",
+          title: "PERDISTE - Intentalo nuevamente !!",
           icon: "error",
           showClass: {
             popup: "animate__animated animate__fadeInDown",
