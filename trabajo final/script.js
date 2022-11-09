@@ -152,7 +152,6 @@ function ganoHumano(puntajeTotalHumano) {
   }
   console.log(
     `%cFIN DE LA PARTIDA : Ganador ${ganador} ${paqueteFiguritas}`,
-    estiloConsoleLogGanador
   );
   return ganadorHumano;
 }
@@ -238,7 +237,6 @@ function reiniciarJuego() {
 
 function yapa() {
   let continuarJuego = !chequeoEquipoCompleto();
-  console.log(pilaFigus);
   if (figusStorage && chequeo.length !== 0) {
     let yapa = chequeo[Math.floor(Math.random() * chequeo.length)];
     localStorage.setItem(

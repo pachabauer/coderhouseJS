@@ -144,7 +144,6 @@ function agregarJugador(jugador, club) {
   let nombreClub = club;
   let position = jugador.position;
   let comparacion = `${numero} - ${nombre} - ${nombreClub}`;
-  console.log(comparacion);
   nombresJugadores.push(comparacion)
   localStorage.setItem("equipo", JSON.stringify(nombresJugadores));
 
