@@ -246,7 +246,7 @@ function yapa() {
     Swal.fire({
       title: "El lado oscuro de la fuerza te regala 1 figu!!",
       text: `Te tocó: ${yapa}`,
-      imageUrl: "imagenes/darthVader.jpg",
+      imageUrl: "../imagenes/darthVader.jpg",
       imageWidth: 300,
       imageHeight: 200,
       imageAlt: "Custom image",

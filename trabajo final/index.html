@@ -4,46 +4,104 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MINIJUEGO</title>
+    <title>Document</title>
   </head>
   <body>
-    <div class="titulo">
-      <h1>PIEDRA PAPEL O TIJERA</h1>
+    
+    <div id="explicacion">
+      INSTRUCCIONES
     </div>
-    <div class="explicacion">
-      <h4>Ganale a la computadora.</h4>
-      <h4>Gana el primero que llega a 3 puntos</h4>
-      <h4>Por cada victoria te llevás un paquete de figuritas</h4>
+    <div id="clickeable">
+      <pre>
+      1 - HAZ CLICK EN UN EQUIPO PARA VER SUS JUGADORES
+      2 - VE AL JUEGO PARA GANAR FIGURITAS
+      3 - CUANDO GANES SUS FIGURITAS, LOS JUGADORES SE IRAN PINTANDO
+      4 - COMPLETA EL ALBUM (con paciencia)
+      ACLARACION - SI NO HACES CLICK EN UN EQUIPO Y VAS AL JUEGO, NO HABRÁ FIGURITAS
+    </pre>
     </div>
-    <div class="seleccion">
-      <div id="jugadorEleccion">Jugador Eligió:</div>
-      <div id="computadoraEleccion">Computadora Eligió:</div>
+    <div id="grupos">
+      <div id="grupoA">
+        GRUPO A
+        <div id="palmeiras" class="idS" onclick="actualizarEquipo(121)">PALMEIRAS</div>
+        <div id="emelec"  class="idS" onclick="actualizarEquipo(1148)">EMELEC</div>
+        <div id="tachira" class="idS" onclick="actualizarEquipo(2807)">D.TACHIRA</div>
+        <div id="ipetrolero" class="idS" onclick="actualizarEquipo(15702)">I.PETROLERO</div>
+      </div>
+      <div id="grupoB">
+        GRUPO B
+        <div id="aparanaense" class="idS" onclick="actualizarEquipo(134)">A.PARANAENSE</div>
+        <div id="libertad"  class="idS" onclick="actualizarEquipo(1179)">LIBERTAD</div>
+        <div id="caracas" class="idS" onclick="actualizarEquipo(2808)">CARACAS</div>
+        <div id="strongest" class="idS" onclick="actualizarEquipo(3711)">THE STRONGEST</div>
+      </div>
+      <div id="grupoC">
+        GRUPO C
+        <div id="nacional" class="idS" onclick="actualizarEquipo(2356)">NACIONAL U</div>
+        <div id="velez"  class="idS" onclick="actualizarEquipo(438)">VELEZ</div>
+        <div id="bragantino"  class="idS" onclick="actualizarEquipo(794)">BRAGANTINO</div>
+        <div id="estudiantes"  class="idS" onclick="actualizarEquipo(450)">
+          ESTUDIANTES LP
+        </div>
+      </div>
+      <div id="grupoD">
+        GRUPO D
+        <div id="mineiro" class="idS" onclick="actualizarEquipo(125)">A.MINEIRO</div>
+        <div id="iDelValle" class="idS" onclick="actualizarEquipo(1153)">I.DEL VALLE</div>
+        <div id="tolima" class="idS" onclick="actualizarEquipo(1142)">D.TOLIMA</div>
+        <div id="aCali" class="idS" onclick="actualizarEquipo(1138)">A. CALI</div>
+      </div>
+      <div id="grupoE">
+        GRUPO E
+        <div id="boca" class="idS" onclick="actualizarEquipo(451)">BOCA JRS</div>
+        <div id="corinthians" class="idS" onclick="actualizarEquipo(131)">CORINTHIANS</div>
+        <div id="dCali" class="idS" onclick="actualizarEquipo(1127)">DEPORTIVO CALI</div>
+        <dvi id="always" class="idS" onclick="actualizarEquipo(3700)">ALWAYS READY</dvi>
+      </div>
+      <div id="grupoF">
+        GRUPO F
+        <div id="river" class="idS" onclick="actualizarEquipo(435)">RIVER PLATE</div>
+        <div id="coloColo" class="idS" onclick="actualizarEquipo(2315)">COLO COLO</div>
+        <div id="alianza" class="idS" onclick="actualizarEquipo(2553)">ALIANZA LIMA</div>
+        <div id="fortaleza" class="idS" onclick="actualizarEquipo(154)">FORTALEZA</div>
+      </div>
+      <div id="grupoG">
+        GRUPO G
+        <div id="penarol" class="idS" onclick="actualizarEquipo(2348)">PEÑAROL</div>
+        <div id="cerro" class="idS" onclick="actualizarEquipo(1176)">CERRO PORTEÑO</div>
+        <div id="colon" class="idS" onclick="actualizarEquipo(448)">COLON</div>
+        <div id="olimpia" class="idS" onclick="actualizarEquipo(1182)">OLIMPIA</div>
+      </div>
+      <div id="grupoH">
+        GRUPO H
+        <div id="flamengo" class="idS" data-id="127" onclick="actualizarEquipo(127)">FLAMENGO</div>
+        <div id="catolica" class="idS" onclick="actualizarEquipo(2994)">U.CATOLICA</div>
+        <div id="cristal" class="idS" onclick="actualizarEquipo(2546)">
+          SPORTING CRISTAL
+        </div>
+        <div id="talleres" class="idS" onclick="actualizarEquipo(456)">TALLERES</div>
+      </div>
     </div>
-
-    <div class="puntajes">
-      <div id="jugadorPuntaje">PUNTAJE:</div>
-      <div id="computadoraPuntaje">PUNTAJE:</div>
-    </div>
-
-    <div class="botones">
-      <button id="Piedra">✊</button>
-      <button id="Papel">✋</button>
-      <button id="Tijera">✌</button>
-    </div>
-    <div id="paqueteFigus"></div>
-    <div id="album">
-      <button onclick="document.location.href ='Album/index.html' " id="completarAlbum">ALBUM</button>
-    </div>
-    <div id="trampita">
-      <button onclick="yapa()" id="yapa">DARK SIDE</button>
-    </div>
-    <div id="reiniciar">
-      <button onclick="reiniciarJuego()" id="reiniciarJuego">REINICIAR JUEGO</button>
+    <button onclick="document.location.href ='../juego/index.html' " id="volver">
+      IR A JUEGO
+    </button>
+    <div id="equipoDatos"></div>
+    <div class="jugadores" id="jugadores">
+      <div class="arquero" id="arquero">
+        <div id="texto">ARQUEROS</div>
+      </div>
+      <div class="defensor" id="defensor">
+        <div id="texto">DEFENSORES</div>
+      </div>
+      <div class="mediocampista" id="mediocampista">
+        <div id="texto">MEDIOCAMPISTAS</div>
+      </div>
+      <div class="delantero" id="delantero">
+        <div id="texto">DELANTEROS</div>
+      </div>
     </div>
     <link rel="stylesheet" href="style.css" />
-
-    <script type="module" src="script.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="/juego/script.js"></script>
+    <script src="code.js"></script>
   </body>
 </html>
